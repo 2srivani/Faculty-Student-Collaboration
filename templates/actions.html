@@ -1,54 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>CloudClass | Quick Actions</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<title>Quick Actions</title>
 </head>
 
 <body>
 
-<!-- ========= NAVBAR ========= -->
-<nav class="navbar">
-    <div class="logo">CloudClass</div>
-    <ul class="nav-links">
-        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-        <li><a href="{{ url_for('student_projects') }}">Student Projects</a></li>
-        <li><a href="{{ url_for('evaluations') }}">Evaluations</a></li>
-        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-    </ul>
-</nav>
+<h2>Quick Actions</h2>
 
-<!-- ========= CONTENT ========= -->
-<div class="page-box">
-
-    <h2>Quick Actions</h2>
-
-    <ul class="action-list">
-
-        <li>
-            <a href="{{ url_for('student_projects') }}">
-                ➕ Add New Project
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ url_for('dashboard') }}">
-                📊 View Reports
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ url_for('dashboard') }}">
-                👥 Manage Users
-            </a>
-        </li>
-
-    </ul>
-
-</div>
+<ul>
+<li><a href="/student-projects">Add New Project</a></li>
+<li><a href="/reports">View Reports</a></li>
+<li><a href="/manage-users">Manage Users</a></li>
+</ul>
 
 </body>
 </html>

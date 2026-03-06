@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reports</title>
+
+<style>
+body{
+font-family: Arial;
+background:#f5f7fa;
+padding:40px;
+}
+
+h1{
+color:#2c3e50;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:8px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#3498db;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>📊 Faculty Reports</h1>
+
+<div class="card">
+<h3>Total Projects Uploaded</h3>
+<p>{{ total_projects }}</p>
+</div>
+
+<div class="card">
+<h3>Total Projects Evaluated</h3>
+<p>{{ total_evaluations }}</p>
+</div>
+
+<div class="card">
+<h3>Average Marks</h3>
+<p>{{ avg_marks }}</p>
+</div>
+
+<h2>Project Evaluation Details</h2>
+
+<table>
+
+<tr>
+<th>Project</th>
+<th>Marks</th>
+<th>Feedback</th>
+</tr>
+
+{% for project,data in evaluation_data.items() %}
+
+<tr>
+<td>{{ project }}</td>
+<td>{{ data.marks }}</td>
+<td>{{ data.feedback }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

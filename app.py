@@ -9,8 +9,11 @@ UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-# store evaluation info (simple version)
-evaluation_data = {}   # {filename: {"marks": 90, "feedback": "..."}}
+# store evaluation info
+evaluation_data = {}
+
+# store users
+users = []
 
 
 # ---------- HOME ----------
@@ -88,6 +91,7 @@ def student_projects():
     projects = os.listdir(upload_folder)
 
     if request.method == "POST":
+
         file = request.files.get("project_file")
 
         if file and file.filename:
@@ -109,7 +113,6 @@ def evaluations():
 
     success_msg = None
 
-    # handle marks + feedback submit
     if request.method == "POST":
 
         project = request.form.get("project")
@@ -117,6 +120,7 @@ def evaluations():
         feedback = request.form.get("feedback")
 
         if project:
+
             evaluation_data[project] = {
                 "marks": marks,
                 "feedback": feedback
@@ -130,6 +134,58 @@ def evaluations():
         evaluation_data=evaluation_data,
         success_msg=success_msg
     )
+
+
+# ---------- REPORTS ----------
+
+@app.route("/reports")
+def reports():
+
+    upload_folder = app.config["UPLOAD_FOLDER"]
+    projects = os.listdir(upload_folder)
+
+    total_projects = len(projects)
+    total_evaluations = len(evaluation_data)
+
+    marks_list = []
+
+    for data in evaluation_data.values():
+        try:
+            marks_list.append(int(data["marks"]))
+        except:
+            pass
+
+    avg_marks = 0
+    if marks_list:
+        avg_marks = sum(marks_list) / len(marks_list)
+
+    return render_template(
+        "reports.html",
+        projects=projects,
+        evaluation_data=evaluation_data,
+        total_projects=total_projects,
+        total_evaluations=total_evaluations,
+        avg_marks=round(avg_marks,2)
+    )
+
+
+# ---------- MANAGE USERS ----------
+
+@app.route("/manage-users", methods=["GET","POST"])
+def manage_users():
+
+    if request.method == "POST":
+
+        name = request.form.get("name")
+        role = request.form.get("role")
+
+        if name and role:
+            users.append({
+                "name": name,
+                "role": role
+            })
+
+    return render_template("manage_users.html", users=users)
 
 
 # ---------- RUN ----------

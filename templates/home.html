@@ -1,1 +1,200 @@
-<h2>Home</h2><a href='/login'>Login</a>
+<!DOCTYPE html>
+<html>
+<head>
+<title>CloudClass Project Portal</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f6f9;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#2c3e50;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+height:70vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(to right,#3498db,#6dd5fa);
+color:white;
+}
+
+.hero h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.hero a{
+padding:12px 25px;
+background:white;
+color:#2c3e50;
+font-weight:bold;
+border-radius:5px;
+text-decoration:none;
+}
+
+/* FEATURES */
+
+.features{
+padding:50px;
+text-align:center;
+}
+
+.feature-container{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.card{
+background:white;
+padding:25px;
+width:260px;
+border-radius:8px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card h3{
+color:#2c3e50;
+}
+
+.card p{
+margin-bottom:20px;
+}
+
+.card a{
+display:inline-block;
+padding:8px 18px;
+background:#3498db;
+color:white;
+border-radius:4px;
+text-decoration:none;
+}
+
+/* FOOTER */
+
+.footer{
+background:#2c3e50;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div>
+<b>CloudClass Portal</b>
+</div>
+
+<div>
+<a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+<a href="/login">Login</a>
+</div>
+
+</div>
+
+
+<!-- HERO SECTION -->
+
+<div class="hero">
+
+<h1>Student Project Management System</h1>
+
+<p>Upload, Evaluate and Manage Student Projects Easily</p>
+
+<a href="/login">Login to Dashboard</a>
+
+</div>
+
+
+<!-- FEATURES SECTION -->
+
+<div class="features">
+
+<h2>Portal Features</h2>
+
+<div class="feature-container">
+
+<div class="card">
+<h3>📤 Upload Project</h3>
+<p>Students can upload their final year or mini projects here.</p>
+<a href="/student-projects">Open</a>
+</div>
+
+<div class="card">
+<h3>📝 Evaluate Projects</h3>
+<p>Faculty can evaluate projects and provide marks and feedback.</p>
+<a href="/evaluations">Open</a>
+</div>
+
+<div class="card">
+<h3>📊 View Reports</h3>
+<p>View total uploaded projects and evaluation statistics.</p>
+<a href="/reports">Open</a>
+</div>
+
+<div class="card">
+<h3>👥 Manage Users</h3>
+<p>Add or manage student and faculty accounts.</p>
+<a href="/manage-users">Open</a>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+© 2026 CloudClass Project Portal
+
+</div>
+
+</body>
+</html>

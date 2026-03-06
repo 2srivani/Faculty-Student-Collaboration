@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CloudClass | Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- ========= NAVBAR ========= -->
+<nav class="navbar">
+    <div class="logo">CloudClass</div>
+    <ul class="nav-links">
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('student_projects') }}">Student Projects</a></li>
+        <li><a href="{{ url_for('evaluations') }}">Evaluations</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- ========= WELCOME ========= -->
+<div class="welcome">
+    <h3>Welcome, P. Pawan 👋</h3>
+    <p>Here’s your personalized CloudClass dashboard. Manage projects, evaluations, and tasks in one place.</p>
+</div>
+
+<!-- ========= CARDS ========= -->
+<div class="cards">
+
+    <!-- CLICKABLE MY COURSES -->
+    <a href="{{ url_for('courses') }}" class="card clickable">
+        <h4>My Courses</h4>
+        <ul>
+            <li>Cloud Computing</li>
+            <li>Web Technologies</li>
+            <li>Database Management Systems</li>
+        </ul>
+    </a>
+
+    <!-- CLICKABLE STUDENT PROJECTS -->
+    <a href="{{ url_for('student_projects') }}" class="card clickable">
+        <h4>Student Projects</h4>
+        <ul>
+            <li>Project Submission</li>
+            <li>View Uploaded Files</li>
+            <li>Track Progress</li>
+        </ul>
+    </a>
+
+    <!-- CLICKABLE EVALUATIONS -->
+    <a href="{{ url_for('evaluations') }}" class="card clickable">
+        <h4>Evaluations</h4>
+        <ul>
+            <li>Evaluate Projects</li>
+            <li>Provide Feedback</li>
+            <li>Marks Overview</li>
+        </ul>
+    </a>
+
+    <!-- CLICKABLE QUICK ACTIONS -->
+    <a href="{{ url_for('actions') }}" class="card clickable">
+        <h4>Quick Actions</h4>
+        <ul>
+            <li>Add New Project</li>
+            <li>View Reports</li>
+            <li>Manage Users</li>
+        </ul>
+    </a>
+
+</div>
+
+<!-- ========= FOOTER ========= -->
+<div class="footer">
+    © 2026 CloudClass | Supporting Student Learning
+</div>
+
+</body>
+</html>

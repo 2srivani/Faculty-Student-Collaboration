@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Evaluations</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f4f6f9;
+}
+
+.container {
+    padding: 30px 40px;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+button {
+    background: #0b1e6d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+.section {
+    display: none;
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.section.active {
+    display: block;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📝 Evaluations</h2>
+
+<div class="actions">
+
+    <div class="card">
+        <h3>Evaluate Projects</h3>
+        <button onclick="show('evaluate')">Evaluate</button>
+    </div>
+
+    <div class="card">
+        <h3>Provide Marks & Feedback</h3>
+        <button onclick="show('feedback')">Submit</button>
+    </div>
+
+    <div class="card">
+        <h3>Marks Overview</h3>
+        <button onclick="show('marks')">View</button>
+    </div>
+
+</div>
+
+<!-- ================= EVALUATE LIST ================= -->
+
+<div id="evaluate" class="section">
+<h3>Submitted Projects</h3>
+
+<ul>
+{% for p in projects %}
+<li>{{ p }}</li>
+{% endfor %}
+</ul>
+</div>
+
+<!-- ================= FEEDBACK FORM ================= -->
+
+<div id="feedback" class="section">
+
+<h3>Submit Evaluation</h3>
+
+{% if success_msg %}
+<p class="success">{{ success_msg }}</p>
+{% endif %}
+
+<form method="POST">
+
+<label>Project:</label><br>
+<select name="project" required>
+    {% for p in projects %}
+    <option value="{{ p }}">{{ p }}</option>
+    {% endfor %}
+</select><br><br>
+
+<label>Marks:</label><br>
+<input type="number" name="marks" min="0" max="100" required><br><br>
+
+<label>Feedback:</label><br>
+<textarea name="feedback" rows="4"></textarea><br><br>
+
+<button type="submit">Submit Evaluation</button>
+
+</form>
+</div>
+
+<!-- ================= MARKS OVERVIEW ================= -->
+
+<div id="marks" class="section">
+
+<h3>Marks Overview</h3>
+
+<table border="1" cellpadding="8">
+
+<tr>
+<th>Project</th>
+<th>Status</th>
+<th>Marks</th>
+</tr>
+
+{% for p in projects %}
+<tr>
+<td>{{ p }}</td>
+<td>
+{% if p in evaluation_data %}
+Evaluated
+{% else %}
+Pending
+{% endif %}
+</td>
+<td>
+{% if p in evaluation_data %}
+{{ evaluation_data[p]["marks"] }}
+{% else %}
+--
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+<a href="{{ url_for('dashboard') }}">⬅ Back to Dashboard</a>
+
+</div>
+
+<script>
+function show(id){
+    document.querySelectorAll(".section").forEach(s=>{
+        s.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+}
+</script>
+
+</body>
+</html>
